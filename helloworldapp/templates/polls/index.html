@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+    {% block body %}
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr class="success">
+                <th>Click on a poll bellow</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% if latest_poll_list %}
+                {% for poll in latest_poll_list %}
+                    <tr>
+                    <td>
+                        <a href="{% url 'polls:detail' poll.id %}">{{ poll.question }}</a>
+                    </td>
+                {% endfor %}
+            {% else %}
+                <td>Currently No polls are available.</td>
+            {% endif %}
+            </tr>
+            </tbody>
+        </table>
+    {% endblock %}
